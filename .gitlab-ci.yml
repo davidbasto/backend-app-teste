@@ -1,0 +1,90 @@
+image: registry.csjt.redejt/csan/gitlabrunner-backend-jdk11:0.0.1
+
+stages:
+  - build
+  - test
+  - pre-release
+  - release
+  - docker
+
+variables:
+  CI_REGISTRY: "registry.csjt.redejt"
+
+build:
+  stage: build
+  script:
+    - mvn compile
+
+test:
+  stage: test
+  script:
+    # - mvn test
+    - echo "aaa"
+    - export
+
+Aprovar-Release:
+  stage: pre-release
+  only:
+    - master
+    - develop
+  when: manual
+  allow_failure: false
+  before_script:
+    - CI_REPOSITORIO="https://csan-automacao:$CI_TOKEN_GIT_CSAN@git.pje.csjt.jus.br/sistema-administrativo/arquitetura/backend-template.git"
+  script:
+    - git checkout $CI_COMMIT_BRANCH
+    - mvn --batch-mode release:prepare -DtagNameFormat=release/@{project.version} -DautoVersionSubmodules=true -DpushChanges=false
+    - git push $CI_REPOSITORIO --tags
+    - git push -o ci.skip $CI_REPOSITORIO --all
+  
+Release-Package:
+  stage: release
+  only:
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_REF_NAME =~ /^release\/.*$/
+  before_script: 
+    - VERSAO_POM=`mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
+    - source docker/versionamento
+    - REPOSITORIO_DOCKER=$(echo $namerepository)
+    - IMAGEM_DOCKER=$(echo $nameimage)
+    - echo "export VERSAO=$VERSAO_POM" >> variaveisRelease
+    - echo "export REPOSITORIO=$REPOSITORIO_DOCKER" >> variaveisRelease
+    - echo "export IMAGEM=$IMAGEM_DOCKER" >> variaveisRelease
+    - cat variaveisRelease
+  script:
+    - mvn package deploy
+  artifacts:
+    paths:
+      - deploy/*.ear
+      - variaveisRelease
+      ### Ajustar para pegar todos os artefatos necessários.
+    expire_in: 1 week
+
+Publish-Imagem-Docker:
+  dependencies:
+    - Release-Package
+  stage: docker
+
+  # Official docker image.
+  image: docker:19.03 
+  
+  #### Indicar para executar somente para Tags E que iniciam com: (release/*)
+  only:
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_REF_NAME =~ /^release\/.*$/
+  services:
+    - docker:19.03-dind
+  before_script: 
+    - source variaveisRelease
+    - cat variaveisRelease
+    - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  script:
+    # Ajustar para não ser necessário utilizar o Git.
+    - cp -r deploy/ docker/
+    - docker build -t $REPOSITORIO/$IMAGEM:$VERSAO docker/.
+    # - docker tag $REPOSITORIO/$IMAGEM:$VERSAO $CI_REGISTRY/$REPOSITORIO/$IMAGEM:$VERSAO
+    # - docker push $CI_REGISTRY/$REPOSITORIO/$IMAGEM:$VERSAO
