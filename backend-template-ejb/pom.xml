@@ -6,7 +6,7 @@
     <parent>
         <artifactId>backend-template</artifactId>
         <groupId>br.jus.csjt.san.template</groupId>
-        <version>0.0.4-SNAPSHOT</version>
+        <version>0.0.3</version>
     </parent>
 
     <artifactId>backend-template-ejb</artifactId>
