@@ -29,7 +29,7 @@ Aprovar-Release:
   when: manual
   allow_failure: false
   before_script:
-    - CI_REPOSITORIO="https://csan-automacao:$CI_TOKEN_GIT_CSAN@git.pje.csjt.jus.br/sistema-administrativo/arquitetura/backend-template.git"
+    - CI_REPOSITORIO="https://csan-automacao:$CI_TOKEN_GIT_CSAN@git.pje.csjt.jus.br/$CI_PROJECT_PATH.git"
   script:
     - git checkout $CI_COMMIT_BRANCH
     - mvn --batch-mode release:prepare -DtagNameFormat=release/@{project.version} -DautoVersionSubmodules=true -DpushChanges=false
