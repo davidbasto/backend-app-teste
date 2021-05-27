@@ -33,7 +33,6 @@
 		<dependency>
 			<groupId>br.jus.csjt.san.base</groupId>
 			<artifactId>san-core-metricas</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>
