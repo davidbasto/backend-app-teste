@@ -4,7 +4,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>br.jus.csjt.san.template</groupId>
    <artifactId>backend-template</artifactId>
-   <version>0.0.4-SNAPSHOT</version>
+   <version>0.0.4-rc-1-SNAPSHOT</version>
    <packaging>pom</packaging>
 
    <url>https://git.pje.csjt.jus.br/sistema-administrativo/arquitetura/backend-template</url>
