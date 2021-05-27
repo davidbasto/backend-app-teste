@@ -18,9 +18,7 @@ build:
 test:
   stage: test
   script:
-    # - mvn test
-    - echo "aaa"
-    - export
+    - mvn test
 
 Aprovar-Release:
   stage: pre-release
