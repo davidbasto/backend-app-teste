@@ -24,14 +24,6 @@ test:
   script:
     - mvn test
 
-teste-notificacao:
-  stage: test
-  image: registry.csjt.redejt/gitlab-runner/frontend-node14:1.0.0 
-  script:
-    - cd notificacao
-    - npm install
-    - node . --mensagem=$CI_COMMIT_REF_NAME  
-
 Aprovar-Release:
   stage: pre-release
   only:
