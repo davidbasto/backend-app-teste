@@ -9,9 +9,6 @@ stages:
 
 variables:
   CI_REGISTRY: "registry.csjt.redejt"
-  HTTP_PROXY: "http://proxyserver.rede.tst:3128"
-  HTTPS_PROXY: "http://proxyserver.rede.tst:3128"
-
 
 build:
   stage: build
