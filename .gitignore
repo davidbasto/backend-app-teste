@@ -5,3 +5,4 @@
 .sonar/
 target/
 deploy/
+node_modules/
