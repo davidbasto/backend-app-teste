@@ -2,7 +2,3 @@ include:
   - project: sistema-administrativo/infra/ci-jobs
     ref: feature/CSAN-632
     file: 'gitlab-ci-backend.yml'
-
-stages:
-  - build
-  - test
