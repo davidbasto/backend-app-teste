@@ -14,9 +14,8 @@
 	<url>https://git.pje.csjt.jus.br/sistema-administrativo/arquitetura/backend-template</url>
 
 	<modules>
-		<module>backend-template-ejb</module>
-		<module>backend-template-web</module>
-		<module>backend-template-ear</module>
+		<module>backend-template-negocio</module>
+		<module>backend-template-api</module>
 	</modules>
 
 	<scm>
@@ -52,7 +51,7 @@
 		<dependencies>
 			<dependency>
 				<groupId>br.jus.csjt.san.template</groupId>
-				<artifactId>backend-template-ejb</artifactId>
+				<artifactId>backend-template-negocio</artifactId>
 				<version>${project.version}</version>
 				<type>ejb</type>
 			</dependency>
@@ -84,7 +83,7 @@
 			<dependency>
 				<groupId>br.jus.csjt.san.base</groupId>
 				<artifactId>san-core-metricas</artifactId>
-				<version>0.0.1-beta-1</version>
+				<version>0.0.1-beta-2</version>
 				<type>jar</type>
 			</dependency>
 		</dependencies>
