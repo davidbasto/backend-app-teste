@@ -1,3 +1,15 @@
 include:
   - project: sistema-administrativo/infra/ci-jobs
     file: 'gitlab-ci-backend.yml'
+  - project: sistema-administrativo/infra/ci-jobs
+    file: 'release-package-nexus.yml'
+  - project: sistema-administrativo/infra/ci-jobs
+    file: 'release-publish-docker.yml'
+
+Release-Package-Nexus:
+  extends: .Release-Package-Nexus
+  stage: release
+
+Publish-Imagem-Docker:
+  extends: .Publish-Imagem-Docker
+  stage: docker
