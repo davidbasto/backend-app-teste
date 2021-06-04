@@ -13,3 +13,4 @@ Release-Package-Nexus:
 Publish-Imagem-Docker:
   extends: .Publish-Imagem-Docker
   stage: docker
+  
