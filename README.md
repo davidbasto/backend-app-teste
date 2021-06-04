@@ -17,6 +17,12 @@ Este repositório tem como objetivo servir como referência de implementação p
 
 ## Changelog
 
+### - 0.0.3 - 04/06/2021
+- Reaproveitamento de configuração da pipeline através do projeto CI-Jobs;
+- Implementação da classe de métricas e dependências do módulo;
+- Configuração do arquivo (aplicacao.properties) para armazenar informações do módulo;
+- Renomeção dos artefatos.
+
 ### - 0.0.2 - 24/05/2021
 - Configuração da pipeline para possibilitar o "build" e publicação das imagens Docker no Registry do CSJT;
 	- Os jobs de criação das imagens Docker são executador somente nas tags no formato: **(release/x.x.x)**
@@ -30,11 +36,60 @@ Este repositório tem como objetivo servir como referência de implementação p
 ### Implementando a API de Health Check
 > //TODO
 ### Implementando a API de Métricas de Dependências
-> //TODO
+
+A implementação da API de dependências do módulo pode ser avaliada a partir da classe: (br.jus.csjt.san.template.infra.ConfiguracaoDependenciasModulo.java)
+
+**Endpoints de Teste**
+
+* Endpoint das métricas: http://localhost:8080/backend-template-api/metrics
+
+* Enpoint da versão do módulo: http://localhost:8080/backend-template-api/api/versao
+
 ### Versionando a Base de Dados com o Liquibase
 > //TODO
+
 ### Configurando Pipelines no Gitlab CI/CD
-> //TODO
+
+A configuração básica da pipeline está reutilizando pipelines básicas definidas no projeto (https://git.pje.csjt.jus.br/sistema-administrativo/infra/ci-jobs).
+
+Deste modo, as configurações podem ser reutilizadas em todos os outros projetos, facilitando eventuais atualizações de forma centralizada para todos os Sistemas Administrativos Nacionais.
+
+#### JOBs básicos configurados na Pipeline
+
+**1) Stage: Build**
+
+Quando: Em todas as execuções da pipeline este job será executado.
+
+> Realiza a compilação do projeto.
+
+**2) Stage: Test**
+
+Quando: Em todas as execuções da pipeline este job será executado.
+
+> Realiza a validação dos testes unitários.  
+
+**3) Stage: Pre-Release**
+
+-Job: Aprovar-Release
+
+Quando: Após aprovação Manual (Disponível apenas nas branches `master` e `develop`.
+
+> Realiza a preparação da Release e cria uma tag no formato: "release/x.y.z".
+ 
+#### JOBs de Release
+
+**4) Stage: Release**
+
+-Job: Release-Package-Nexus
+
+Quando: Disparado na criação de uma tag no padrão "release/x.y.z".
+> Realiza a publicação dos artefatos da aplicação no repositório Nexus: http://portal.pje.redejt/nexus/service/rest/repository/browse/releases-administrativo
+
+**5) Stage: Docker**
+
+-Job: Publish-Imagem-Docker
+Quando: Disparado na criação de uma tag no padrão "release/x.y.z".
+> Realiza a compilação e publicação da imagem Docker no Registry: https://registry.csjt.redejt/
 ### Definição de Imagens Docker
 
 ## Executando a Aplicação
@@ -54,37 +109,17 @@ Para implantar o projeto, basta apenas executar o comando abaixo após a inicial
 
 > mvn clean package wildfly:deploy 
 
-3. Este comando irá implantar o arquivo `target/backend-template.ear` na instância do servidor de aplicações em execução.
+3. Este comando irá implantar o arquivo `target/backend-template.api.war` na instância do servidor de aplicações em execução.
 
 ### Acessando a Aplicação
   
-A aplicação está rodando na seguinte URL:  <http://localhost:8080/backend-template-web>
-
-1. Enter a name, email address, and Phone nubmer in the input field and click the _Register_ button.
-
-2. If the data entered is valid, the new member will be registered and added to the _Members_ display list.
-
-3. If the data is not valid, you must fix the validation errors and try again.
-
-4. When the registration is successful, you will see a log message in the server console:
+A aplicação está rodando na seguinte URL:  <http://localhost:8080/backend-template-api>
 
 ### Desimplantar a Aplicação
 
 Execute o comando abaixo da desfazer a implantação da aplicação no servidor de aplicações:  
   
 > mvn wildfly:undeploy
-
-  ### Executando Testes com Arquillian 
-
-This quickstart provides Arquillian tests. By default, these tests are configured to be skipped as Arquillian tests require the use of a container.
-
-_NOTE: The following commands assume you have configured your Maven user settings. If you have not, you must include Maven setting arguments on the command line. See [Run the Arquillian Tests](https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/RUN_ARQUILLIAN_TESTS.md) for complete instructions and additional options._
-
-1. Make sure you have started the JBoss Server as described above.
-2. Open a command line and navigate to the root directory of this quickstart.
-3. Type the following command to run the test goal with the following profile activated:
-
-> mvn clean test -Parq-wildfly-remote
 
 ## Referência
 * https://github.com/wildfly/quickstart/

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>backend-template</artifactId>
+		<groupId>br.jus.csjt.san.template</groupId>
+		<version>0.0.1-beta-1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>backend-template-api</artifactId>
+	<packaging>war</packaging>
+
+	<name>Backend Template: API</name>
+
+	<properties>
+		<build.datahora>${build.time}</build.datahora>
+		<project.nomemodulo>Template Backend - API</project.nomemodulo>
+	</properties>
+
+	<dependencies>
+
+		<!-- Dependency on the EJB module so we can use it's services if needed -->
+		<dependency>
+			<groupId>br.jus.csjt.san.template</groupId>
+			<artifactId>backend-template-negocio</artifactId>
+			<type>ejb</type>
+		</dependency>
+
+		<dependency>
+			<groupId>br.jus.csjt.san.base</groupId>
+			<artifactId>san-core-metricas</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>aplicacao.properties</include>
+				</includes>
+			</resource>
+		</resources>
+		
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<outputDirectory>${project.basedir}/../deploy</outputDirectory>
+					<webResources>
+						<resource>
+							<directory>${basedir}/src/main/webapp</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>index.html</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>timestamp-property</id>
+						<goals>
+							<goal>timestamp-property</goal>
+						</goals>
+						<configuration>
+							<name>build.time</name>
+							<pattern>dd/MM/yyyy - HH:mm</pattern>
+							<locale>pt_BR</locale>
+							<timeZone>GMT-03</timeZone>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
