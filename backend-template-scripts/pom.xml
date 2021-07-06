@@ -6,9 +6,9 @@
 		<version>0.0.1-beta-3-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>backend-template-liquibase</artifactId>
+	<artifactId>backend-template-scripts</artifactId>
 	<packaging>jar</packaging>
-	<name>Backend Template: Scripts Liquibase</name>
+	<name>Backend Template: Scripts de Banco</name>
 
 	<properties>
 		<liquibase.version>4.4.0</liquibase.version>
