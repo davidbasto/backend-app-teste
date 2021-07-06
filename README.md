@@ -72,7 +72,7 @@ Quando: Em todas as execuções da pipeline este job será executado.
 
 -Job: Aprovar-Release
 
-Quando: Após aprovação Manual (Disponível apenas nas branches `master` e `develop`.
+Quando: Após aprovação Manual (Disponível apenas nas branches `main` e `develop`.
 
 > Realiza a preparação da Release e cria uma tag no formato: "release/x.y.z".
  
