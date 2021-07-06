@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: cria-fnc_buscar_cids_serv_periodo
+      author: gustavo.almeida
+      changes:
+        - sql:
+            endDelimiter: \n/
+            stripComments: false
+            splitStatements: false
+            sql: |
+              create or replace function sgs.fnc_buscar_cids_serv_periodo( 
+              p_mat_servidor varchar2, 
+              p_periodo_inicio date , 
+              p_periodo_fim date, 
+              p_id_categoria number,
+              p_perfil varchar2,
+              p_ind_acidente_trabalho number) return varchar2 is
+
+              cursor c_licencas_sigep is
+                  SELECT DISTINCT CID FROM (
+                      select distinct sml.cid
+                      from srh2.tab_afasta_serv l
+                      inner join (
+                          select nr_licenca, nm_ano, cid
+                          from srh2.sm_licenca sml
+                          unpivot (
+                              cid for cids in (cid, cid1, cid2)
+                          )    
+                      ) sml on sml.nr_licenca = l.nr_licenca and sml.nm_ano = l.aa_licenca
+                      where l.mat_servidor = p_mat_servidor
+                      and l.dt_ini_afasta <= p_periodo_fim
+                      and l.dt_fim_afasta >= p_periodo_inicio
+                      and l.sit_afasta in ('D', 'A')
+                      and (l.cod_afasta, l.cod_modal) in (
+                          select tl.id_tipo_licenca_sigep, m.id_modalidade_sigep
+                          from sgs.tb_modalidade_licenca m
+                          inner join sgs.tb_tipo_licenca tl on tl.id = m.id_tipo_licenca
+                          where (p_id_categoria is null or p_id_categoria = tl.id_categoria_licenca)
+                          and (p_ind_acidente_trabalho is null or p_ind_acidente_trabalho = tl.ind_acidente_trabalho)
+                      )
+
+                      UNION
+                      
+                      
+                      select c.codigo
+                      from sgs.tb_licenca_cid lc
+                      inner join sgs.tb_licenca_medica lm on lm.id = lc.id_licenca
+                      inner join sgs.tb_cid10 c on c.id = lc.id_cid
+                      inner join sgs.tb_modalidade_licenca m on m.id = lm.id_modalidade
+                      inner join sgs.tb_tipo_licenca tl on tl.id = m.id_tipo_licenca 
+                      where lm.id_situacao_licenca_medica in (7,10)
+                      and (p_id_categoria is null or p_id_categoria = lm.id_categoria_licenca)
+                      and (p_ind_acidente_trabalho is null or p_ind_acidente_trabalho = tl.ind_acidente_trabalho)
+                      and p_periodo_inicio <= lm.data_fim_licenca
+                      and p_periodo_fim >= lm.data_inicio_licenca
+                      and lm.matricula_servidor = p_mat_servidor
+                  );
+              v_cids varchar2(4000);
+              v_cid varchar2(10);
+              begin
+                  v_cids := ' ';
+                  for r_cid_sigep in c_licencas_sigep loop
+                      if (p_perfil in ('Médico', 'Dentista', 'Enfermeiro', 'Psicólogo', 'Fisioterapeuta')) then
+                          v_cid := r_cid_sigep.cid;
+                      else
+                          v_cid := 'RESTRITO';
+                      end if;
+                      if( v_cid is not null and instr(v_cids, v_cid) = 0) then
+                          if v_cids <> ' '  then
+                              v_cids := v_cids || ', ';
+                          end if;
+                          v_cids := v_cids || v_cid;
+                      end if;     
+                  end loop; 
+                  return v_cids;
+              end;

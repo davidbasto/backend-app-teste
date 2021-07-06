@@ -14,6 +14,7 @@
 	<modules>
 		<module>backend-template-negocio</module>
 		<module>backend-template-api</module>
+      	<module>backend-template-scripts</module>
 	</modules>
 
 	<scm>

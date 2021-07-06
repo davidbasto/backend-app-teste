@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: ajusta-acesso-perfil-auditor
+      author: gustavo.almeida
+      changes:
+        - update:
+            tableName: tb_perfil_menu
+            columns:
+              - column:
+                  name: selecionado
+                  value: 0
+            where: |
+              id_perfil = 17 -- auditor
+              and id_menu in (4,8,9,10)
+  - changeSet:
+      id: ajusta-acesso-menu-relatorio-lic-fora-prazo
+      author: gustavo.almeida
+      changes:
+        - insert:
+            tableName: tb_perfil_menu
+            columns:
+              - column:
+                  name: id
+                  valueComputed: (SEQ_TB_PERFIL_MENU.nextval)
+              - column:
+                  name: id_perfil
+                  value: 6 # Psicólogo
+              - column:
+                  name: id_menu
+                  value: 77 # Relatório Licença Fora Prazo
+              - column:
+                  name: selecionado
+                  value: 1
+        - insert:
+            tableName: tb_perfil_menu
+            columns:
+              - column:
+                  name: id
+                  valueComputed: (SEQ_TB_PERFIL_MENU.nextval)
+              - column:
+                  name: id_perfil
+                  value: 11 # Assist. Social
+              - column:
+                  name: id_menu
+                  value: 77 # Relatório Licença Fora Prazo
+              - column:
+                  name: selecionado
+                  value: 1
