@@ -26,3 +26,7 @@ O comando abaixo aplica as mudanças no banco.
 
 > `mvn liquibase:update`
 
+# Referências
+* https://docs.liquibase.com/workflows/database-setup-tutorials/oracle.html
+* https://docs.liquibase.com/concepts/basic/home.html
+* https://docs.liquibase.com/concepts/advanced/home.html

@@ -1,0 +1,11 @@
+databaseChangeLog:
+- changeSet:  
+    id:  001-inserir-parametro-secundario
+    author:  CSAN/CSJT
+    changes:  
+    -  insert:  
+        tableName:  tb_parametro
+        columns:  
+        -  column:  
+            name:  tx_nome_parametro  
+            value:  "Parâmetro Secundário"

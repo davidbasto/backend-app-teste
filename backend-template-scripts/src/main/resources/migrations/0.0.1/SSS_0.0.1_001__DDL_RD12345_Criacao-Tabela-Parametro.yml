@@ -1,0 +1,20 @@
+databaseChangeLog:
+- changeSet:  
+    id:  001-cria-tabela-parametro
+    author:  CSAN/CSJT
+    changes:  
+    -  createTable:  
+        tableName:  tb_parametro
+        columns:  
+        -  column:  
+            name:  id_parametro  
+            type:  INT
+            autoIncrement:  true
+            constraints:
+              primaryKey:  true
+              nullable:  false
+        -  column:  
+            name:  tx_nome_parametro  
+            type:  varchar(50)
+            constraints:
+              nullable:  false
