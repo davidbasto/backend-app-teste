@@ -1,0 +1,11 @@
+databaseChangeLog:
+- changeSet:  
+    id:  002-inserir-parametro-inicial
+    author:  CSAN/CSJT
+    changes:  
+    -  insert:  
+        tableName:  tb_parametro
+        columns:  
+        -  column:  
+            name:  tx_nome_parametro  
+            value:  "Parâmetro Inicial"
