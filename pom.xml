@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.jus.csjt.san.template</groupId>
 	<artifactId>backend-template</artifactId>
-	<version>0.0.1-beta-3-SNAPSHOT</version>
+	<version>0.0.1-beta-5-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>backend-template</name>
