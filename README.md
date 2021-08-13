@@ -93,7 +93,9 @@ Quando: Disparado na criação de uma tag no padrão "release/x.y.z".
 > Realiza a compilação e publicação da imagem Docker no Registry: https://registry.csjt.redejt/
 
 ### Definição de Imagens Docker
-> //TODO
+A definição de imagens Docker está concentrada no diretório: `/docker`
+
+Maiores informações: https://san-doc.csjt.jus.br/index.php/Guia_de_Desenvolvimento_Recomendado#Docker
 
 ### Implementando a API de Health Check
 > //TODO
@@ -129,3 +131,4 @@ Execute o comando abaixo da desfazer a implantação da aplicação no servidor 
 
 ## Referência
 * https://github.com/wildfly/quickstart/
+* https://san-doc.csjt.jus.br/index.php/Guia_de_Desenvolvimento_Recomendado
