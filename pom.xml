@@ -14,7 +14,6 @@
 	<modules>
 		<module>backend-template-negocio</module>
 		<module>backend-template-api</module>
-      	<module>backend-template-scripts</module>
 	</modules>
 
 	<scm>
@@ -46,6 +45,7 @@
 
 		<javaee.version>8.0</javaee.version>
 	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -82,7 +82,7 @@
 			<dependency>
 				<groupId>br.jus.csjt.san.base</groupId>
 				<artifactId>san-core-metricas</artifactId>
-				<version>0.0.1-beta-3</version>
+				<version>0.0.1-beta-4</version>
 				<type>jar</type>
 			</dependency>
 		</dependencies>

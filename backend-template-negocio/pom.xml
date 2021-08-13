@@ -12,7 +12,7 @@
 	<artifactId>backend-template-negocio</artifactId>
 	<packaging>ejb</packaging>
 
-	<name>Backend Template: nEGÓCIO</name>
+	<name>Backend Template: NEGÓCIO</name>
 
 	<dependencies>
 		<!-- Declare the APIs we depend on and need for compilation. All of them 
