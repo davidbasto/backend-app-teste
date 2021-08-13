@@ -18,6 +18,7 @@
 	<properties>
 		<build.datahora>${build.time}</build.datahora>
 		<project.nomemodulo>Template Backend - API</project.nomemodulo>
+		<outputDirectory>${project.build.directory}</outputDirectory>
 	</properties>
 
 	<dependencies>
@@ -54,6 +55,7 @@
 				<version>${version.war.plugin}</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<outputDirectory>${outputDirectory}</outputDirectory>
 					<webResources>
 						<resource>
 							<directory>${basedir}/src/main/webapp</directory>
@@ -91,29 +93,10 @@
 	<profiles>
 		<profile>
 			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-war-plugin</artifactId>
-						<version>${version.war.plugin}</version>
-						<configuration>
-							<failOnMissingWebXml>false</failOnMissingWebXml>
-							<outputDirectory>${project.basedir}/../deploy</outputDirectory>
-							<webResources>
-								<resource>
-									<directory>${basedir}/src/main/webapp</directory>
-									<filtering>true</filtering>
-									<includes>
-										<include>index.html</include>
-									</includes>
-								</resource>
-							</webResources>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
+			<properties>
+				<outputDirectory>${project.basedir}/../deploy</outputDirectory>
+			</properties>
 		</profile>
 	</profiles>
-
 
 </project>
