@@ -1,7 +1,0 @@
-databaseChangeLog:
-- changeSet:
-    id:  tag-0.0.2
-    author:  CSAN/CSJT
-    changes:  
-      - tagDatabase:  
-          tag:  0.0.2

@@ -35,6 +35,7 @@ Este repositório tem como objetivo servir como referência de implementação p
 
 ### Implementando a API de Health Check
 > //TODO
+
 ### Implementando a API de Métricas de Dependências
 
 A implementação da API de dependências do módulo pode ser avaliada a partir da classe: (br.jus.csjt.san.template.infra.ConfiguracaoDependenciasModulo.java)
@@ -46,7 +47,7 @@ A implementação da API de dependências do módulo pode ser avaliada a partir 
 * Enpoint da versão do módulo: http://localhost:8080/backend-template-api/api/versao
 
 ### Versionando a Base de Dados com o Liquibase
-> //TODO
+O exemplo de versionamento da Base de Dados com Liquibase é apresentado no repositório: https://git.pje.csjt.jus.br/sistema-administrativo/arquitetura/backend-template-scripts
 
 ### Configurando Pipelines no Gitlab CI/CD
 
@@ -90,7 +91,14 @@ Quando: Disparado na criação de uma tag no padrão "release/x.y.z".
 -Job: Publish-Imagem-Docker
 Quando: Disparado na criação de uma tag no padrão "release/x.y.z".
 > Realiza a compilação e publicação da imagem Docker no Registry: https://registry.csjt.redejt/
+
 ### Definição de Imagens Docker
+A definição de imagens Docker está concentrada no diretório: `/docker`
+
+Maiores informações: https://san-doc.csjt.jus.br/index.php/Guia_de_Desenvolvimento_Recomendado#Docker
+
+### Implementando a API de Health Check
+> //TODO
 
 ## Executando a Aplicação
 
@@ -123,3 +131,4 @@ Execute o comando abaixo da desfazer a implantação da aplicação no servidor 
 
 ## Referência
 * https://github.com/wildfly/quickstart/
+* https://san-doc.csjt.jus.br/index.php/Guia_de_Desenvolvimento_Recomendado

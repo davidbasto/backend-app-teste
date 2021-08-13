@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -16,6 +18,7 @@
 	<properties>
 		<build.datahora>${build.time}</build.datahora>
 		<project.nomemodulo>Template Backend - API</project.nomemodulo>
+		<outputDirectory>${project.build.directory}</outputDirectory>
 	</properties>
 
 	<dependencies>
@@ -45,14 +48,14 @@
 				</includes>
 			</resource>
 		</resources>
-		
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${version.war.plugin}</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<outputDirectory>${project.basedir}/../deploy</outputDirectory>
+					<outputDirectory>${outputDirectory}</outputDirectory>
 					<webResources>
 						<resource>
 							<directory>${basedir}/src/main/webapp</directory>
@@ -64,7 +67,7 @@
 					</webResources>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -86,5 +89,14 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<properties>
+				<outputDirectory>${project.basedir}/../deploy</outputDirectory>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
