@@ -15,26 +15,13 @@ Este repositório tem como objetivo servir como referência de implementação p
 * EJB 3.2;
 * JPA 2.1 e Bean Validation 1.1;
 
-## Changelog
-
-### - 0.0.3 - 04/06/2021
-- Reaproveitamento de configuração da pipeline através do projeto CI-Jobs;
-- Implementação da classe de métricas e dependências do módulo;
-- Configuração do arquivo (aplicacao.properties) para armazenar informações do módulo;
-- Renomeção dos artefatos.
-
-### - 0.0.2 - 24/05/2021
-- Configuração da pipeline para possibilitar o "build" e publicação das imagens Docker no Registry do CSJT;
-	- Os jobs de criação das imagens Docker são executador somente nas tags no formato: **(release/x.x.x)**
-
-### - 0.0.1 - 17/05/2021
- - Implementação inicial do projeto de referência;
- - Configuração das pipelines "build" e "test" no Gitlab;
+---
 
 ## Implementações de Referência
 
 ### Implementando a API de Health Check
 > //TODO
+
 ### Implementando a API de Métricas de Dependências
 
 A implementação da API de dependências do módulo pode ser avaliada a partir da classe: (br.jus.csjt.san.template.infra.ConfiguracaoDependenciasModulo.java)
@@ -43,54 +30,34 @@ A implementação da API de dependências do módulo pode ser avaliada a partir 
 
 * Endpoint das métricas: http://localhost:8080/backend-template-api/metrics
 
-* Enpoint da versão do módulo: http://localhost:8080/backend-template-api/api/versao
+* Enpoint da versão do módulo: http://localhost:8080/backend-template-api/versao
+
+---
 
 ### Versionando a Base de Dados com o Liquibase
-> //TODO
+O exemplo de versionamento da Base de Dados com Liquibase é apresentado no repositório: https://git.pje.csjt.jus.br/sistema-administrativo/arquitetura/backend-template-scripts
+
+---
 
 ### Configurando Pipelines no Gitlab CI/CD
 
-A configuração básica da pipeline está reutilizando pipelines básicas definidas no projeto (https://git.pje.csjt.jus.br/sistema-administrativo/infra/ci-jobs).
+A configuração de pipelines nos projetos consiste na reutilização de pipelines básicas disponibilizadas no projeto (https://git.pje.csjt.jus.br/sistema-administrativo/infra/ci-jobs).
 
 Deste modo, as configurações podem ser reutilizadas em todos os outros projetos, facilitando eventuais atualizações de forma centralizada para todos os Sistemas Administrativos Nacionais.
 
-#### JOBs básicos configurados na Pipeline
+Maiores informações sobre a configuração de pipelines disponíveis no projeto: https://git.pje.csjt.jus.br/sistema-administrativo/infra/ci-jobs/-/blob/main/README.md
 
-**1) Stage: Build**
+---
 
-Quando: Em todas as execuções da pipeline este job será executado.
-
-> Realiza a compilação do projeto.
-
-**2) Stage: Test**
-
-Quando: Em todas as execuções da pipeline este job será executado.
-
-> Realiza a validação dos testes unitários.  
-
-**3) Stage: Pre-Release**
-
--Job: Aprovar-Release
-
-Quando: Após aprovação Manual (Disponível apenas nas branches `main` e `develop`.
-
-> Realiza a preparação da Release e cria uma tag no formato: "release/x.y.z".
- 
-#### JOBs de Release
-
-**4) Stage: Release**
-
--Job: Release-Package-Nexus
-
-Quando: Disparado na criação de uma tag no padrão "release/x.y.z".
-> Realiza a publicação dos artefatos da aplicação no repositório Nexus: http://portal.pje.redejt/nexus/service/rest/repository/browse/releases-administrativo
-
-**5) Stage: Docker**
-
--Job: Publish-Imagem-Docker
-Quando: Disparado na criação de uma tag no padrão "release/x.y.z".
-> Realiza a compilação e publicação da imagem Docker no Registry: https://registry.csjt.redejt/
 ### Definição de Imagens Docker
+A definição de imagens Docker está concentrada no diretório: `/docker`
+
+Maiores informações: https://san-doc.csjt.jus.br/index.php/Guia_de_Desenvolvimento_Recomendado#Docker
+
+### Implementando a API de Health Check
+> //TODO
+
+---
 
 ## Executando a Aplicação
 
@@ -123,3 +90,4 @@ Execute o comando abaixo da desfazer a implantação da aplicação no servidor 
 
 ## Referência
 * https://github.com/wildfly/quickstart/
+* https://san-doc.csjt.jus.br/index.php/Guia_de_Desenvolvimento_Recomendado

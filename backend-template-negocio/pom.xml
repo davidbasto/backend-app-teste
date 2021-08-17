@@ -6,13 +6,13 @@
 	<parent>
 		<artifactId>backend-template</artifactId>
 		<groupId>br.jus.csjt.san.template</groupId>
-		<version>0.0.1-beta-5-SNAPSHOT</version>
+		<version>0.0.1-beta-6-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>backend-template-negocio</artifactId>
 	<packaging>ejb</packaging>
 
-	<name>Backend Template: nEGÓCIO</name>
+	<name>Backend Template: NEGÓCIO</name>
 
 	<dependencies>
 		<!-- Declare the APIs we depend on and need for compilation. All of them 

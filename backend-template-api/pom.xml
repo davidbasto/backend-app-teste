@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>backend-template</artifactId>
 		<groupId>br.jus.csjt.san.template</groupId>
-		<version>0.0.1-beta-5-SNAPSHOT</version>
+		<version>0.0.1-beta-6-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>backend-template-api</artifactId>
@@ -16,6 +16,7 @@
 	<properties>
 		<build.datahora>${build.time}</build.datahora>
 		<project.nomemodulo>Template Backend - API</project.nomemodulo>
+		<outputDirectory>${project.build.directory}</outputDirectory>
 	</properties>
 
 	<dependencies>
@@ -45,14 +46,14 @@
 				</includes>
 			</resource>
 		</resources>
-		
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${version.war.plugin}</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<outputDirectory>${project.basedir}/../deploy</outputDirectory>
+					<outputDirectory>${outputDirectory}</outputDirectory>
 					<webResources>
 						<resource>
 							<directory>${basedir}/src/main/webapp</directory>
@@ -64,7 +65,7 @@
 					</webResources>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -86,5 +87,14 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<properties>
+				<outputDirectory>${project.basedir}/../deploy</outputDirectory>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
