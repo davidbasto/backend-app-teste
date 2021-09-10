@@ -7,7 +7,7 @@
 	<version>0.0.1-beta-6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>backend-template</name>
+	<name>Backend Template: Parent</name>
 
 	<url>https://git.pje.csjt.jus.br/sistema-administrativo/arquitetura/backend-template</url>
 
