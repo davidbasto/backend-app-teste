@@ -143,7 +143,7 @@
 	<repositories>
 		<repository>
 			<id>Nexus CSJT Public Group</id>
-			<url>http://portal.pje.redejt/nexus/repository/public/</url>
+			<url>http://portal.pje.redejt/nexus/repository/public-administrativo/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
