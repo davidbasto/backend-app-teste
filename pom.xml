@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.jus.csjt.san.template</groupId>
 	<artifactId>backend-template</artifactId>
-	<version>0.0.1-beta-6-SNAPSHOT</version>
+	<version>0.0.1-beta-8-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>backend-template</name>
+	<name>Backend Template: Parent</name>
 
 	<url>https://git.pje.csjt.jus.br/sistema-administrativo/arquitetura/backend-template</url>
 
@@ -142,11 +142,8 @@
 
 	<repositories>
 		<repository>
-			<id>Nexus CSJT Public Group</id>
-			<url>http://portal.pje.redejt/nexus/repository/public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<id>Nexus CSJT - Administrativo Public Group</id>
+			<url>http://portal.pje.redejt/nexus/repository/public-administrativo/</url>
 		</repository>
 	</repositories>
 
