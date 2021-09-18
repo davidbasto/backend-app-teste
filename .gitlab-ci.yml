@@ -1,5 +1,5 @@
 variables:
-  MODO_TESTE: "true"
+  MODO_TESTE: "false"
 
 include:
   - project: sistema-administrativo/infra/ci-jobs
