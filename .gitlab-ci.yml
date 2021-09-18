@@ -1,9 +1,12 @@
 include:
   - project: sistema-administrativo/infra/ci-jobs
+    ref: 5-possibilitar-testes-da-pipeline-em-modo-leitura
     file: 'gitlab-ci-backend.yml'
   - project: sistema-administrativo/infra/ci-jobs
+    ref: 5-possibilitar-testes-da-pipeline-em-modo-leitura
     file: 'release-package-nexus.yml'
   - project: sistema-administrativo/infra/ci-jobs
+    ref: 5-possibilitar-testes-da-pipeline-em-modo-leitura
     file: 'release-publish-docker.yml'
 
 Release-Package-Nexus:
