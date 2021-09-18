@@ -1,3 +1,6 @@
+variables:
+  MODO_DRYRUN: "true"
+
 include:
   - project: sistema-administrativo/infra/ci-jobs
     file: 'gitlab-ci-backend.yml'
