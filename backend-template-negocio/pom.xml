@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>backend-template</artifactId>
 		<groupId>br.jus.csjt.san.template</groupId>
-		<version>0.0.1-beta-17-SNAPSHOT</version>
+		<version>0.0.1-beta-17</version>
 	</parent>
 
 	<artifactId>backend-template-negocio</artifactId>
