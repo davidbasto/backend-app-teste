@@ -82,7 +82,7 @@
 			<dependency>
 				<groupId>br.jus.csjt.san.base</groupId>
 				<artifactId>san-core-metricas</artifactId>
-				<version>0.0.1-beta-4</version>
+				<version>1.0.0</version>
 				<type>jar</type>
 			</dependency>
 		</dependencies>
