@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.jus.csjt.san.template</groupId>
 	<artifactId>backend-template</artifactId>
-	<version>0.0.1-beta-18-SNAPSHOT</version>
+	<version>0.0.1-rc-3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Backend Template: Parent</name>
@@ -82,7 +82,7 @@
 			<dependency>
 				<groupId>br.jus.csjt.san.base</groupId>
 				<artifactId>san-core-metricas</artifactId>
-				<version>0.0.1-beta-4</version>
+				<version>1.0.0</version>
 				<type>jar</type>
 			</dependency>
 		</dependencies>
