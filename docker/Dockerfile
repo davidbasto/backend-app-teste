@@ -2,7 +2,7 @@
 # Utiliza a imagem base do Widlfy - SIGEP-JT
 #######################################################################
 
-FROM registry.csjt.redejt/sigep-jt/base-wildfly:22.0.1.Final-csjt-3
+FROM registry.csjt.redejt/sigep-jt/base-wildfly:22.0.1.Final-csjt-4
 
 ENV URL_BANCO=jdbc:oracle:thin:@host:porta/SID
 ENV USUARIO_BANCO=user
