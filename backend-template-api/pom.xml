@@ -27,12 +27,6 @@
 			<artifactId>backend-template-negocio</artifactId>
 			<type>ejb</type>
 		</dependency>
-
-		<dependency>
-			<groupId>br.jus.csjt.san.base</groupId>
-			<artifactId>san-core-metricas</artifactId>
-		</dependency>
-
 	</dependencies>
 
 	<build>
