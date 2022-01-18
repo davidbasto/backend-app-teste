@@ -11,8 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import br.jus.csjt.san.template.model.Uf;
-import br.jus.csjt.san.template.service.UfServico;
+import br.jus.csjt.backend.model.Uf;
+import br.jus.csjt.backend.service.UfServico;
 
 @Path("uf")
 @PermitAll

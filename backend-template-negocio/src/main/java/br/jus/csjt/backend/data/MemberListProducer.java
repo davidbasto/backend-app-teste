@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.jus.csjt.san.template.data;
+package br.jus.csjt.backend.data;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -23,9 +23,8 @@ import javax.enterprise.event.Reception;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
+import br.jus.csjt.backend.model.Member;
 import java.util.List;
-
-import br.jus.csjt.san.template.model.Member;
 
 @RequestScoped
 public class MemberListProducer {

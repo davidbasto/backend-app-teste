@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.jus.csjt.san.template.data;
+package br.jus.csjt.backend.data;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

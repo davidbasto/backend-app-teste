@@ -24,7 +24,7 @@ Este repositório tem como objetivo servir como referência de implementação p
 
 ### Implementando a API de Métricas de Dependências
 
-A implementação da API de dependências do módulo pode ser avaliada a partir da classe: (br.jus.csjt.san.template.infra.ConfiguracaoDependenciasModulo.java)
+A implementação da API de dependências do módulo pode ser avaliada a partir da classe: (br.jus.csjt.backend.infra.ConfiguracaoDependenciasModulo.java)
 
 **Endpoints de Teste**
 

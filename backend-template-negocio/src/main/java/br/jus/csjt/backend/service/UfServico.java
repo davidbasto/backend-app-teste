@@ -1,8 +1,8 @@
-package br.jus.csjt.san.template.service;
+package br.jus.csjt.backend.service;
 
 import java.util.Arrays;
 import java.util.List;
-import br.jus.csjt.san.template.model.Uf;
+import br.jus.csjt.backend.model.Uf;
 
 public class UfServico {
 

@@ -1,4 +1,4 @@
-package br.jus.csjt.san.template.model;
+package br.jus.csjt.backend.model;
 
 public class Uf {
 	private String sigla;

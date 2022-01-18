@@ -1,4 +1,4 @@
-package br.jus.csjt.san.template.infra;
+package br.jus.csjt.backend.infra;
 
 import java.io.IOException;
 import javax.ws.rs.container.ContainerRequestContext;
