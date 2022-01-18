@@ -1,4 +1,4 @@
-package br.jus.trt15.integracaorh.service.api.uf;
+package br.jus.csjt.backend.service.api.uf;
 
 import java.util.List;
 import javax.annotation.security.PermitAll;

@@ -1,4 +1,0 @@
-data-source add --jndi-name=java:jboss/datasources/ExemploSistemaDS --name=ExemploSistemaDS --enabled=true --use-java-context=true --driver-name=oracle \ 
-    --connection-url=${env.URL_BANCO} --user-name=${env.USUARIO_BANCO} --password=${env.SENHA_BANCO}  \
-    --valid-connection-checker-class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker" \
-    --background-validation=true --background-validation-millis=60000 
